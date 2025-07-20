@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.posgenone.app.feature.splash.SplashScreen
 import com.posgenone.app.feature.auth.RoleSelectionScreen
 import com.posgenone.app.feature.auth.PinInputScreen
 import com.posgenone.app.feature.dashboard.TableDashboardScreen
@@ -13,11 +12,8 @@ import com.posgenone.app.feature.dashboard.TableDashboardScreen
 fun AppNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route
+        startDestination = Screen.Role.route
     ) {
-        composable(Screen.Splash.route) {
-            SplashScreen(navController)
-        }
         composable(Screen.Role.route) {
             RoleSelectionScreen(navController)
         }
