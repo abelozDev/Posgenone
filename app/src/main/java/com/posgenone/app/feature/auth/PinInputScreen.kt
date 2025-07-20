@@ -143,7 +143,7 @@ fun PinInputScreen(navController: NavController) {
                         ) {
                             if (index < pin.length) {
                                 Text(
-                                    text = "•",
+                                    text = "*",
                                     fontSize = 36.sp,
                                     color = Color.Black,
                                     textAlign = TextAlign.Center
@@ -167,7 +167,7 @@ fun PinInputScreen(navController: NavController) {
                                     delay(1000)
                                     isLoading = false
                                     if (pin == correctPin) {
-                                        navController.navigate("dashboard") {
+                                        navController.navigate("loading") {
                                             popUpTo("pin") { inclusive = true }
                                         }
                                     } else {

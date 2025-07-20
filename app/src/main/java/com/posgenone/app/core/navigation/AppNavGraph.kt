@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.posgenone.app.feature.auth.RoleSelectionScreen
 import com.posgenone.app.feature.auth.PinInputScreen
 import com.posgenone.app.feature.dashboard.TableDashboardScreen
+import com.posgenone.app.feature.splash.LoadingScreen
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
@@ -26,7 +27,17 @@ fun AppNavGraph(navController: NavHostController) {
             PinInputScreen(navController)
         }
         composable(Screen.Dashboard.route) {
-            TableDashboardScreen(navController)
+            TableDashboardScreen()
+        }
+
+        composable("loading") {
+            LoadingScreen(
+                onFinished = {
+                    navController.navigate("dashboard") {
+                        popUpTo("pin") { inclusive = true }
+                    }
+                }
+            )
         }
     }
 }
