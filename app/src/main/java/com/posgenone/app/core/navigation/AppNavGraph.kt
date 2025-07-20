@@ -15,8 +15,13 @@ fun AppNavGraph(navController: NavHostController) {
         startDestination = Screen.Role.route
     ) {
         composable(Screen.Role.route) {
-            RoleSelectionScreen(navController)
+            RoleSelectionScreen(
+                onContinue = {
+                    navController.navigate(Screen.Pin.route)
+                }
+            )
         }
+
         composable(Screen.Pin.route) {
             PinInputScreen(navController)
         }
