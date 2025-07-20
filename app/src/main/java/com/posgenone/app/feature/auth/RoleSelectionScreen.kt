@@ -57,7 +57,7 @@ fun RoleCard(onClick: () -> Unit = {}) {
             .fillMaxWidth()
             .height(202.dp)
             .background(
-                color = Color(0x9918181C), // 60% прозрачности
+                color = Color(0x9918181C),
                 shape = RoundedCornerShape(20.dp)
             )
             .padding(20.dp)
