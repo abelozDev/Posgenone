@@ -19,6 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.posgenone.app.R
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.zIndex
+import com.posgenone.app.feature.dashboard.model.TableStatus
+import com.posgenone.app.feature.dashboard.model.TableType
+import com.posgenone.app.feature.dashboard.model.TableUiModel
 
 
 @Composable
@@ -28,11 +32,48 @@ fun TableDashboardScreen() {
             .fillMaxSize()
             .background(Color(0xFF222125))
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(0f)
+        ) {
+            TableMapScreen(
+                tables = listOf(
+                    TableUiModel(
+                        id = 1, number = "R3", x = 50, y = 200, type = TableType.FOUR, status = TableStatus.OCCUPIED,
+                        label = "Checked-in", reservedTime = "19:30", chairs = listOf(true, true, true, false)
+                    ),
+                    TableUiModel(
+                        id = 2, number = "R1", x = 50, y = 400, type = TableType.FOUR, status = TableStatus.FREE,
+                        label = null, reservedTime = null, chairs = listOf(false, false, false, false)
+                    ),
+                    TableUiModel(
+                        id = 3, number = "Q5", x = 350, y = 200, type = TableType.TWO, status = TableStatus.RESERVED,
+                        label = "Reserved", reservedTime = "20:00", chairs = listOf(false, true)
+                    ),
+                    TableUiModel(
+                        id = 4, number = "Q2", x = 350, y = 400, type = TableType.TWO, status = TableStatus.OCCUPIED,
+                        label = "Checked-in", reservedTime = "21:00", chairs = listOf(true, false)
+                    ),
+                    TableUiModel(
+                        id = 5, number = "R2", x = 350, y = 600, type = TableType.TWO, status = TableStatus.FREE,
+                        label = "Checked-in", reservedTime = "21:00", chairs = listOf(true, false)
+                    )
+                )
+            )
+        }
+
+        // Весь остальной контент поверх
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(1f)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
+                    .background(Color(0xFF222125))
                     .padding(horizontal = 24.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -57,7 +98,6 @@ fun TableDashboardScreen() {
                     tint = Color.Unspecified
                 )
             }
-
             Spacer(modifier = Modifier.height(12.dp))
 
             // Top control row with stats and buttons
@@ -116,7 +156,7 @@ fun TableDashboardScreen() {
                         Image(
                             painter = painterResource(id = R.drawable.tables_button_icon),
                             contentDescription = "Tables",
-                            modifier = Modifier.size(36.dp)
+                            modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
@@ -134,7 +174,7 @@ fun TableDashboardScreen() {
                         Image(
                             painter = painterResource(id = R.drawable.orders_button_icon),
                             contentDescription = "Orders",
-                            modifier = Modifier.size(36.dp)
+                            modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
@@ -154,7 +194,7 @@ fun TableDashboardScreen() {
                         Image(
                             painter = painterResource(id = R.drawable.reports_button_icon),
                             contentDescription = "Reports",
-                            modifier = Modifier.size(36.dp)
+                            modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
