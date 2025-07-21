@@ -146,7 +146,8 @@ fun PinInputScreen(navController: NavController) {
                                     text = "*",
                                     fontSize = 36.sp,
                                     color = Color.Black,
-                                    textAlign = TextAlign.Center
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.padding(top = 8.dp)
                                 )
                             }
                         }
